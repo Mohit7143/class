@@ -1,0 +1,87 @@
+.bg{
+  background-color:#000;
+  color:#F6E5B5;
+  height:100%;
+}
+.card1{
+  position: fixed;
+  z-index: 1;
+  margin:1% 0% 2% 17%;
+  padding-top:2%;
+  padding-left:6%;
+  width:60%;
+  height:80%;
+  border-radius:35px;
+  /*background-color:#111;*/
+  border-color: #F6EECB;
+  color:#FFF;
+  font-size:110%; 
+  display:none;
+}
+.btxt1{
+  width:90%;
+  height:35px;
+  text-align: center;
+  font-size:18px;
+  border-radius:10px;
+  background-color: #F6EECB;
+}
+.button1{
+    background-color:#000;
+    color:#FFF;
+    border-color:#F6EECB;
+    margin: 3% 2% 0% 4%;
+    width: 60%;
+    height: 10%;
+    border-radius:50%;
+    font-size:120%; 
+    cursor: pointer;
+}
+.button2{
+  color:#000;
+  margin: 5% 5% 2% 7%;
+  width: 140px;
+  height:40px;
+  color:#F6EECB;
+  background-color:#000;
+  border-radius:30px;
+  font-size:15px; 
+  border-color:#F6EECB;
+  cursor: pointer;
+}
+.ctxt1{
+  margin:0% 0% 5% 7%;
+  width:60%;
+  height:15%;
+  border-color: #FFF;
+  border-radius:10px;
+  background-color:#F6EECB;
+  font-size:130%;
+  color:#000;
+  text-align:center;
+}
+.tb{
+  margin:2% 0% 5% 5%;
+  width:90%;
+  color: #F6E5B5;
+  text-align:left;
+  font-size:20px;
+  padding-top:20px;
+  padding-left:20px;
+  padding-right:0px;
+  padding-bottom:20px;
+  background-color:#111;
+  border-color: #F6EECB;
+  border-radius:20px;
+  text-align: left;
+}
+.tcf{
+  text-align:center;
+  height: 60px;
+  width:20%;
+}
+.tcs{
+  padding-right:20px;
+  width:30%;
+  height: 60px;
+}

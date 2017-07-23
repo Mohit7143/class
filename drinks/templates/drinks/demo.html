@@ -1,0 +1,42 @@
+{% extends 'drinks/base.html' %}
+{% block title %}
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+<script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+<div class="nk-box">
+            <div class="container">
+                <div class="nk-gap-5"></div>
+        <div class="nk-box-2 ">
+            <div class="nk-gap-1"></div>
+            <h2 class="nk-title">Drop Us a Line</h2>
+            <div class="nk-gap"></div>
+            <form action="" class="nk-form nk-form-ajax nk-form-style-1" method="post">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'id_content');
+                </script>
+                <div class="nk-gap"></div>
+                <button type="submit" class="nk-btn nk-btn-effect-2-right nk-btn-color-dark-1">
+                    <span>Send</span>
+                    <span class="icon"><i class="ion-paper-airplane"></i></span>
+                </button>
+            </form>
+            <div class="nk-gap-1"></div>
+        </div>
+        </div>
+        </div>
+{% endblock %}

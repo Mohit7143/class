@@ -1,0 +1,59 @@
+{% extends 'drinks/base.html' %}
+{% block title %}
+{% load staticfiles %}
+<style type="text/css">
+    a,a:hover{
+        color:blue;
+        text-decoration: none;
+    }
+</style>
+<div class="nk-box">
+            <div class="container">
+                <div class="nk-gap-5"></div>
+    {% for all in form %}
+            <div class="card text-center">
+            <div class="card-header">{{ all.admin }}</div>
+            <div class="card-block">
+            <h4 class="card-title">{{ all.title }}</h4>
+            <p class="card-text">{{ all.content|safe }}</p>
+            <a href="/" class="btn btn-primary">Read More</a>
+            </div>
+            <div class="card-footer text-muted">
+                {{ all.publish}}
+            </div>
+            </div>
+            <div class="nk-gap-4"></div>
+    {% endfor %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if form.has_previous %}
+            <a href="?page={{ form.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ form.number }} of {{ form.paginator.num_pages }}.
+        </span>
+
+        {% if form.has_next %}
+            <a href="?page={{ form.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+<div class="nk-pagination nk-pagination-center">
+                <a href="#" class="nk-pagination-prev">
+                    <span class="nk-icon-arrow-left"></span>
+                </a>
+                <nav>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a class="nk-pagination-current" href="#">3</a>
+                    <span>...</span>
+                    <a href="#">14</a>
+                </nav>
+                <a href="#" class="nk-pagination-next">
+                    <span class="nk-icon-arrow-right"></span>
+                </a>
+            </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'drinks/base.html' %}
+{% block title %}
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="nk-box">
+            <div class="container" >
+                <div class="nk-gap-5"></div>
+                <div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <script type="text/javascript">
+                            CKEDITOR.replace( 'id_content');
+                         </script>
+                        <button type="submit" class="nk-btn nk-btn-effect-2-right nk-btn-color-dark-1">
+                            <span>Send</span>
+                            <span class="icon"><i class="ion-paper-airplane"></i></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+    </div>
+{% endblock %}

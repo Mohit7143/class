@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load staticfiles %}
+    <title>ACE | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'drinks/assets/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'drinks/assets/bower_components/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'drinks/assets/bower_components/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'drinks/assets/css/khaki.css' %}">
+    <script src="{% static 'drinks/assets/bower_components/jquery/dist/jquery.min.js' %}"></script>
+</head>
+<body>
+    <header class="nk-header">
+          <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+            <div class="container">
+                <div class="nk-nav-table">
+                    <a href="index.html" class="nk-nav-logo">
+                        <img src="" alt="image" width="70">
+                    </a>
+                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
+                        <li class="active">
+                            <a href="{% url 'drinks:index' %}">Home</a>
+                        </li>
+                        <li >
+                            <a href="{% url 'drinks:add' %}">Add New Post</a>
+                        </li>
+                        <li >
+                            <a href="event.html">My Profile</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li><a class="glyphicon glyphicon-off" href="{% url 'users:logout' %}"><i class="fa fa-sign-out fa-2x" aria-hidden="true" value="Log-out"></i></a></li>
+                        {% else %}
+                             <li><a class="cd-signin" data-toggle="modal" data-target=".bd-example-modal-lg" href="{% url 'users:login' %}"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i></a></li>  
+                        {% endif %}  
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-left-side nk-navbar-overlay-content hidden-lg-up">
+        <div class="nano">
+            <div class="nano-content">
+                <div class="nk-nav-table">
+                    <div class="nk-nav-row">
+                        <a href="index.html" class="nk-nav-logo">
+                            <img src="" alt="image here" width="70">
+                        </a>
+                    </div>
+                    <div class="nk-nav-row nk-nav-row-full nk-nav-row-top">
+                        <div class="nk-navbar-mobile-content">
+                            <ul class="nk-nav">
+                                <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nk-main" style="color:#000;">
+    <div class="nk-gap-5"></div>
+    {% block title %}
+    {% endblock %}
+        <div class="nk-gap-4"></div>
+        <footer class="nk-footer nk-footer-parallax nk-footer-parallax-opacity">
+            <div class="nk-copyright">
+                <div class="container text-center">
+                     &copy; 2017. All rights reserved
+                </div>
+            </div>
+        </footer>
+        <div class="nk-side-buttons nk-side-buttons-visible">
+        <ul>
+
+            <li>
+                <span class="nk-scroll-top">
+                    <span class="ion-ios-arrow-up"></span>
+                </span>
+            </li>
+        </ul>
+    </div>
+    </div>
+<script src="{% static 'drinks/assets/bower_components/gsap/src/minified/TweenMax.min.js' %}"></script>
+    <script src="{% static 'drinks/assets/bower_components/gsap/src/minified/plugins/ScrollToPlugin.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'drinks/assets/bower_components/tether/dist/js/tether.min.js' %}"></script>
+    <script src="{% static 'drinks/assets/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+    <!-- Sticky Kit -->
+    <script src="{% static 'drinks/assets/bower_components/sticky-kit/dist/sticky-kit.min.js' %}"></script>
+
+
+
+    <!-- Jquery Form -->
+    <script src="{% static 'drinks/assets/bower_components/jquery-form/dist/jquery.form.min.js' %}"></script>
+
+    <!-- Jquery Validation -->
+    <script src="{% static 'drinks/assets/bower_components/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+
+    <!-- Jquery Countdown + Moment -->
+
+
+    <!-- Hammer.js -->
+    <script src="{% static 'drinks/assets/bower_components/hammer.js/hammer.min.js' %}"></script>
+
+    <!-- Social Likes -->
+
+
+    <!-- NanoSroller -->
+    <script src="{% static 'drinks/assets/bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.min.js' %}"></script>
+
+    <!-- SoundManager2 -->
+
+
+    <!-- DateTimePicker -->
+
+    <!-- Revolution Slider -->
+
+
+    <!-- Prism -->
+
+
+    <!-- Khaki -->
+    <script src="{% static 'drinks/assets/js/khaki.min.js' %}"></script>
+    <script src="{% static 'drinks/assets/js/khaki-init.js' %}"></script>
+</body>
