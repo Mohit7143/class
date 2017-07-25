@@ -40,19 +40,25 @@
     </span>
 </div>
 <div class="nk-pagination nk-pagination-center">
-                <a href="#" class="nk-pagination-prev">
-                    <span class="nk-icon-arrow-left"></span>
-                </a>
+                {% if form.has_previous %}
+                    <a href="?page={{ form.previous_page_number }}" class="nk-pagination-prev">
+                        <span class="nk-icon-arrow-left"></span>
+                    </a>
+                {% endif %}
                 <nav>
-                    <a href="#">1</a>
+                    {% for x in list|make_list %}
+                        <a href="#">{{ x }}</a>
+                    {% endfor %}
                     <a href="#">2</a>
                     <a class="nk-pagination-current" href="#">3</a>
                     <span>...</span>
                     <a href="#">14</a>
                 </nav>
-                <a href="#" class="nk-pagination-next">
-                    <span class="nk-icon-arrow-right"></span>
-                </a>
+                {% if form.has_next %}
+                    <a href="?page={{ form.next_page_number }}" class="nk-pagination-next">
+                        <span class="nk-icon-arrow-right"></span>
+                    </a>
+                {% endif %}
             </div>
     </div>
 </div>

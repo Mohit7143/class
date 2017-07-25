@@ -10,7 +10,6 @@
   width: 100%;
   height: 100%;
   font-family: "Roboto", sans-serif;
-  background-color: #5356ad;
   overflow: hidden;
  
 }
@@ -36,7 +35,7 @@
   width: 600px;
   margin: 30px auto 0;
   height: 320px;
-  background-color: #999ede;
+  background-color: #000;
   top: 50%;
   margin-top: -160px;
   -moz-transition: all 0.5s;
@@ -128,7 +127,7 @@
   margin: 20px;
 }
 .container1 .container-forms .container-info .info-item .btn007 {
-  background-color: transparent;
+  background-color: #000;
   border: 1px solid #fff;
 }
 .container1 .container-forms .container-info .info-item .table-cell {
@@ -281,23 +280,32 @@
       <div class="form-item log-in">
         <div class="table">
           <div class="table-cell">
-            <input name="Username" placeholder="Username" type="text" /><input name="Password" placeholder="Password" type="Password" />
-            <div class="btn007">
+           <form action="{% url 'users:login' %}" method="post">
+           	{% csrf_token %}
+            {% for field in form %}
+            	{{ field }}
+            {% endfor %}
+            <button type="submit" class="btn007">
               Log in
-            </div>
+            </button>
+           </form>
           </div>
         </div>
       </div>
       <div class="form-item sign-up">
         <div class="table">
           <div class="table-cell">
-            <input name="fullName" placeholder="Full Name" type="text" />
-            <input name="email" placeholder="Email" type="text" />
-            <input name="Username" placeholder="Username" type="text" />
-            <input name="Password" placeholder="Password" type="Password" />
-            <div class="btn007">
-              Sign up
-            </div>
+          <form action="{% url 'users:register' %}" method="post">
+           	{% csrf_token %}
+            {% for field in tmp %}
+            	{{ field.label_tag }}
+            	{{ field }}
+            	}
+            {% endfor %}
+            <button type="submit" class="btn007">
+              Sign Up
+            </button>
+           </form>
           </div>
         </div>
       </div>
@@ -305,6 +313,10 @@
   </div>
 </div>
 </div>
+<div class="nk-gap-5"></div>
+<div class="nk-gap-5"></div>
+<div class="nk-gap-5"></div>
+<div class="nk-gap-5"></div>
 <script type="text/javascript">
     $(".info-item .btn007").click(function(){
   $(".container1").toggleClass("log-in");

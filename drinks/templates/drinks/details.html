@@ -11,14 +11,15 @@
         Featured
     </div>
     <div class="card-block">
-        <h4 class="card-title">Special title treatment</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <h4 class="card-title">{{ all.title }}</h4>
+        <p class="card-text">{{ all.content|safe }}</p>
     </div>
     <div class="card-footer text-muted">
-         2 days ago
+         {{ all.publish }}
     </div>
     </div>
     <div class="nk-gap-1"></div>
+    <div style="color:#000;">{{ comment.pk }}</div>
     <div id="comments"></div>
                        <div class="card " style="width: 110%; padding: 10px; border: solid  1px;" >
                         <div class="nk-comments">
@@ -125,9 +126,8 @@
                         <div class="nk-reply">
                             <h3 class="nk-title h4">Leave a reply</h3>
                             <div class="nk-gap"></div>
-                            <form action="#" method="post" class="nk-form nk-form-style-1" novalidate="novalidate">
-                                <textarea class="form-control required" name="message" rows="5" placeholder="Message *" aria-required="true"></textarea>
-                                <div class="nk-gap-1"></div>
+                            <form action="" method="post" class="nk-form nk-form-style-1" novalidate="novalidate">
+                                {% csrf_token %}
                                 <button type="submit" class="nk-btn nk-btn-effect-2-right nk-btn-color-dark-1">
                                     <span>Reply</span>
                                     <span class="icon"><i class="ion-reply"></i></span>

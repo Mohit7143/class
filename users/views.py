@@ -10,10 +10,7 @@ class UserLogin(View):
     template = 'users/login.html'
 
     def get(self,request):
-        if request.user.is_authenticated:
-            return redirect('drinks:index')
-        form = self.form_class(None)
-        return render(request , self.template ,{'form': form})
+        return redirect('users:test')
 
     def post(self,request):
         form = self.form_class(request.POST)
@@ -30,8 +27,7 @@ class UserRegister(View):
     template = 'users/register.html'
 
     def get(self,request):
-        form = self.form_class(None)
-        return render(request, self.template, {'form': form})
+        return redirect('users:test')
 
     def post(self,request):
         form = self.form_class(request.POST)
@@ -52,7 +48,16 @@ class UserRegister(View):
 
 def LogoutView(request):
     logout(request)
-    return redirect('users:login') 
+    return redirect('users:test') 
 
 def test(request):
-    return render(request,'users/login_test.html')  
+    log_form = LoginUser
+    Reg_form = RegisterUser
+    template = 'users/login_test.html'
+    if request.user.is_authenticated:
+            return redirect('drinks:index')
+    context = {
+     'form' : log_form,
+     'tmp' : Reg_form,
+    }
+    return render(request , template ,context)

@@ -1,6 +1,6 @@
 from django.views import generic
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from .models import Article
+from .models import Article,Comment
 from django.http import HttpResponse,Http404
 from django.shortcuts import render,redirect
 from .forms import initform,commentadd
@@ -26,17 +26,25 @@ class IndexView(LoginRequiredMixin,generic.ListView):
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
             contacts = paginator.page(paginator.num_pages)
-
-        return render(request, 'drinks/index.html', {'form': contacts})
+        context = {
+          'form' : contacts,
+          'list' : page 
+        }
+        return render(request, 'drinks/index.html', context)
 
 
 def DetailsPost(request,id):
     if request.user.is_authenticated:
         try:
             post = Article.objects.get(pk=id)
+            comment = Comment.objects.filter(Art=post)
+            context = {
+             'all' : post,
+             'comment' : comment, 
+            }
         except Article.DoesNotExist:
             raise Http404("Post Does not Exist in our database")
-        return render(request , 'drinks/details.html' ,{'all' : post}) 
+        return render(request , 'drinks/details.html' ,context) 
     return redirect('users:login')       
         
 
@@ -66,6 +74,7 @@ def addcomment(request,all):
         form = commentadd(request.POST)
         if form.is_valid:
             comment = form.save(commit=False)
+            return HttpResponse({form.cleaned_data['']})
             comment.admin = request.user
             comment.Art = all
             comment.save()
