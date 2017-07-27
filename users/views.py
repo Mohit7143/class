@@ -7,24 +7,23 @@ from django.contrib.auth import authenticate,login,logout
 
 class UserLogin(View):
     form_class = LoginUser
-    template = 'users/login.html'
 
     def get(self,request):
         return redirect('users:test')
 
     def post(self,request):
         form = self.form_class(request.POST)
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('drinks:index')
-        return render(request, 'users/login.html', {'form': form})
+        if form.is_valid:
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                login(request,user)
+                return redirect('drinks:index')
+        return redirect('users:test')
 
 class UserRegister(View):
     form_class = RegisterUser
-    template = 'users/register.html'
 
     def get(self,request):
         return redirect('users:test')
@@ -44,7 +43,7 @@ class UserRegister(View):
                 login(request,user)
                 return redirect('drinks:index')
 
-        return render(request, self.template, {'form': form})
+        return redirect('users:test')
 
 def LogoutView(request):
     logout(request)

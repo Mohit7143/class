@@ -37,10 +37,11 @@ def DetailsPost(request,id):
     if request.user.is_authenticated:
         try:
             post = Article.objects.get(pk=id)
-            comment = Comment.objects.filter(Art=post)
+            comment = Comment()
+            get = post.comment_set.all()
             context = {
              'all' : post,
-             'comment' : comment, 
+             'get' : get, 
             }
         except Article.DoesNotExist:
             raise Http404("Post Does not Exist in our database")
@@ -74,7 +75,6 @@ def addcomment(request,all):
         form = commentadd(request.POST)
         if form.is_valid:
             comment = form.save(commit=False)
-            return HttpResponse({form.cleaned_data['']})
             comment.admin = request.user
             comment.Art = all
             comment.save()

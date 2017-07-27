@@ -11,7 +11,6 @@
   height: 100%;
   font-family: "Roboto", sans-serif;
   overflow: hidden;
- 
 }
 
 
@@ -32,9 +31,9 @@
 
 .container1 {
   position: relative;
-  width: 600px;
+  width: 700px;
   margin: 30px auto 0;
-  height: 320px;
+  height: 350px;
   background-color: #000;
   top: 50%;
   margin-top: -160px;
@@ -81,7 +80,7 @@
   margin: 0 auto;
   width: 100px;
   color: #fff;
-  background-color: #f7971e;
+  background-color: #000;
   opacity: 1;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -92,13 +91,16 @@
   opacity: 0.7;
 }
 .container1 .btn007, .container1 input {
-  padding: 10px 15px;
+  padding: 10px 10px;
 }
 .container1 input {
-    color: grey;
+    color: black;
   margin: 0 auto 15px;
+  margin-top: 15px;
   display: block;
-  width: 220px;
+  width: 250px;
+  height: 50px;
+  border-radius: 3px;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -140,11 +142,11 @@
 .container1 .container-form {
   overflow: hidden;
   position: absolute;
-  left: 30px;
+  left: 50px;
   top: -30px;
-  width: 305px;
-  height: 380px;
-  background-color: #fff;
+  width: 335px;
+  height: 410px;
+  background-color: #000;
   box007-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -167,7 +169,8 @@
 .container1 .container-form .btn007 {
   position: relative;
   box007-shadow: 0 0 10px 1px #ff73b3;
-  margin-top: 30px;
+  margin-top: 0px;
+  margin-left: 100px;
 }
 .container1 .form-item {
   position: absolute;
@@ -292,15 +295,17 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+        document.getElementsByName('username')[0].placeholder='Username';
+        document.getElementsByName('password')[0].placeholder='Password';
+      </script>
       <div class="form-item sign-up">
         <div class="table">
           <div class="table-cell">
           <form action="{% url 'users:register' %}" method="post">
            	{% csrf_token %}
             {% for field in tmp %}
-            	{{ field.label_tag }}
             	{{ field }}
-            	}
             {% endfor %}
             <button type="submit" class="btn007">
               Sign Up
@@ -309,6 +314,11 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+        document.getElementsByName('username')[1].placeholder='Username';
+        document.getElementsByName('password')[1].placeholder='Password';
+
+      </script>
     </div>
   </div>
 </div>

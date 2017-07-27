@@ -8,7 +8,7 @@
 
     <div class="card text-center" style="width: 110%;" >
     <div class="card-header">
-        Featured
+        {{ all.admin }}
     </div>
     <div class="card-block">
         <h4 class="card-title">{{ all.title }}</h4>
@@ -19,7 +19,12 @@
     </div>
     </div>
     <div class="nk-gap-1"></div>
-    <div style="color:#000;">{{ comment.pk }}</div>
+    <div style="color:#000;">
+    {% for x in get %}
+        {{ x.admin }}
+        {{ x.content }}
+    {% endfor %}
+    </div>
     <div id="comments"></div>
                        <div class="card " style="width: 110%; padding: 10px; border: solid  1px;" >
                         <div class="nk-comments">
